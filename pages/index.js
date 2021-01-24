@@ -1,15 +1,18 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
+import { useEffect } from "react"
 
-export default function Home({ res }) {
-  console.log(res);
+export default function Home({ cryptoData }) {
+  
   return (
     <Layout page="CryptoWaz">
       <ul className="flex justify-around py-10">
-        {res.map((crypto, index) => (
+        {cryptoData.map((crypto, index) => (
+          
           <li
             index={index}
-            className="relative hover:shadow-md p)8 border border-yellow-300 rounded-3xl bg-yellow-100 md:w-auto flex-1 mx-5"
+            key={index}
+            className="relative hover:shadow-md p-8 border border-yellow-300 rounded-3xl bg-yellow-100 md:w-auto flex-1 mx-5"
           >
             <Link href="/">
               <a className="rounded-md">
@@ -39,7 +42,7 @@ export default function Home({ res }) {
                   )}
                 </p>
                 <p>
-                  3 Days:{" "}
+                  30 Days:{" "}
                   <span className="font-bold">
                     {parseFloat(crypto["30d"].price_change_pct * 100).toFixed(2)}{" "}
                     %{" "}
@@ -72,13 +75,15 @@ export default function Home({ res }) {
 }
 
 export async function getStaticProps(context) {
-  try {
-    const res = await fetch(
+   try {
+   
+    const cryptoData = await fetch(
       "https://api.nomics.com/v1/currencies/ticker?key=demo-b5d84e505a11969a7184f899fbb40ae1&ids=BTC,ETH,XRP&interval=1d,30d,365d"
-    ).then((res) => res.json());
+    ).then((cryptoData) => cryptoData.json());
 
     return {
-      props: { res },
+      props: { cryptoData },
+      revalidate: 1,
     };
   } catch (err) {
     console.error(err);
