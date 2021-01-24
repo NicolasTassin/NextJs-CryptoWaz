@@ -6,7 +6,7 @@ export default function Home({ cryptoData }) {
   
   return (
     <Layout page="CryptoWaz">
-      <ul className="flex justify-around py-10">
+      <ul className="md:flex sm:flex-row justify-around py-10 ">
         {cryptoData.map((crypto, index) => (
           
           <li
