@@ -9,12 +9,16 @@
   },
   "dependencies": {
     "autoprefixer": "^10.2.1",
+    "crypto-js": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "fs": "^0.0.1-security",
     "next": "10.0.5",
     "postcss": "^8.2.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "standard": "^16.0.3",
     "tailwindcss": "^2.0.2",
+    "websocket": "^1.0.33",
     "yarn": "^1.22.10"
   }
 }

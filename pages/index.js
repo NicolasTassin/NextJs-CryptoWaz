@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 
 
+
 export default function Home({ cryptoData }) {
   
   return (
@@ -78,7 +79,7 @@ export async function getStaticProps(context) {
    try {
    
     const cryptoData = await fetch(
-      "https://api.nomics.com/v1/currencies/ticker?key=demo-b5d84e505a11969a7184f899fbb40ae1&ids=BTC,ETH,UNI,LINK,AAVE,DOT&interval=1d,30d,365d"
+      "https://api.nomics.com/v1/currencies/ticker?key=318f39899f30f80ab4deee8731f13276&ids=BTC,ETH,UNI,LINK,DOT,GRT&interval=1d,30d,365d"
     ).then((cryptoData) => cryptoData.json());
 
     return {
